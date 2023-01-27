@@ -5,39 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration Form</title>
 </head>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
     body {
         background-color: black;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         height: 100vh;
+        flex-direction: column;
+    }
+
+    h1 {
+        color: white;
+        font-size: 50px;
+        margin-bottom: 20px;
+        font-family: sans-serif;
+        font-weight: 300;
     }
 
     form {
-        width: 40%;
-        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.152);
         padding: 20px;
-        border: none;
         border-radius: 20px;
-        background-color: rgba(255, 255, 255, 0.184);
         display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
     }
 
     .form-cont {
         display: flex;
-        /* align-items: center; */
-        /* justify-content: center; */
-        flex-direction: row;
-        margin: 10px;
-        background-color: black;
-        /* padding: 10px; */
         width: 95%;
+        margin-top: 10px;
+        background-color: black;
         border-radius: 20px;
         overflow: hidden;
     }
@@ -47,215 +57,266 @@
         padding: 10px 20px;
         border-radius: 20px;
         margin-right: 10px;
-        font-family: sans-serif;
         font-size: 15px;
-        width: 30%;
+        width: 35%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        position: relative;
     }
 
     #reqd {
         color: red;
-        font-size: 25px;
-        font-weight: bold;
-        height: 10px;
-        position: absolute;
-        right: 15px;
-        top: 3px;
     }
 
     .form-cont input {
         background-color: black;
         border: none;
         color: white;
+        outline: none;
         width: 70%;
         font-size: 16px;
-        font-family: sans-serif;
-    }
-
-     input:focus {
-        outline: none;
     }
 
     select {
         background-color: black;
         border: none;
         color: white;
-        width: 75%;
+        width: 70%;
         font-size: 16px;
-    }
-
-    select:focus {
         outline: none;
     }
 
-
     .form-cont1 {
         display: flex;
-        /* align-items: center; */
-        /* justify-content: center; */
-        flex-direction: column;
-        margin: 10px;
-        background-color: black;
-        /* padding: 10px; */
         width: 95%;
+        margin-top: 10px;
+        background-color: black;
         border-radius: 20px;
         overflow: hidden;
+        flex-direction: column;
     }
 
     textarea {
         background-color: black;
         border: none;
         color: white;
+        outline: none;
         width: 100%;
         font-size: 16px;
         padding: 10px;
-        font-family: sans-serif;
-    }
-
-    textarea:focus {
-        outline: none;
-    }
-
-    .form-cont1 label {
-        width: 40%;
     }
 
     #submitbtn {
         background-color: white;
-        color: black;
         border: none;
-        padding: 10px;
+        color: black;
+        padding: 10px 20px;
         border-radius: 20px;
-        font-size: 16px;
-        font-family: sans-serif;
+        font-size: 20px;
         margin-top: 20px;
-    }
-                                                                                       
-    #submitbtn:hover {
-        background-color: black;
-        color: white;
         cursor: pointer;
     }
 
-
-    .form-cont2{
-        display: flex;
-        /* align-items: center; */
-        /* justify-content: center; */
-        flex-direction: row;
-        margin: 10px;
+    #submitbtn:hover {
         background-color: black;
-        /* padding: 10px; */
+        color: white;
+    }
+
+    .form-cont2 {
+        display: flex;
         width: 95%;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    .dobin{
-        display: flex;
-        /* align-items: center; */
-        justify-content: center;
-        flex-direction: row;
-        margin: 10px;
+        margin-top: 10px;
         background-color: black;
-        /* padding: 10px; */
-        width: 70%;
         border-radius: 20px;
         overflow: hidden;
-
+        flex-direction: row;
     }
 
-    .dobin input{
+    .dobin {
+        display: flex;
+        width: 70%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dobin input {
         background-color: black;
         border: none;
         color: white;
-        width: 10%;
+        outline: none;
+        width: 25%;
         font-size: 16px;
-        font-family: sans-serif;
-        text-align: center;
     }
 
-    .dobin p{
+    .vr{
         color: white;
         font-size: 20px;
-        font-weight: bold;
-        margin: 0 10px;
+        margin: 0px 10px;
+    }
+
+
+    .err{
+        color: red;
+        font-size: 12px;
+        margin: 5px 0px;
+        display: none;
+        width: 95%;
+        margin-left:70%;
     }
 </style>
 
 <body>
+    <h1>Registration Form</h1>
     <form>
         <div class="form-cont">
-            <label for="first-name">First Name:
-                <span id="reqd">*</span>
-            </label>
-            <input type="text" id="first-name" name="first-name"  placeholder="Enter your first name">
+            <label>First Name: <span id="reqd">*</span></label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name">
         </div>
+        <p class="err"  id="firstnameerr">Please Enter First Name</p>
 
         <div class="form-cont">
-            <label for="second-name">Second Name: <span id="reqd">*</span></label>
+            <label>Second Name:
+            </label>
             <input type="text" id="second-name" name="second-name" placeholder="Enter your second name">
         </div>
+        <!-- <p class="err"  id="firstnameerr">Please Enter Second Name</p> -->
 
         <div class="form-cont">
-            <label for="email">Email: <span id="reqd">*</span></label>
+            <label>Email:<span id="reqd">*</span>
+            </label>
+
             <input type="email" id="email" name="email" placeholder="Enter your email">
         </div>
+        <p class="err"  id="emailerr">Please Enter Email</p>
 
         <div class="form-cont2">
-            <label for="dob">DOB: <span id="reqd">*</span></label>
+            <label>DOB: <span id="reqd">*</span></label>
             <div class="dobin">
-                <input  id="dobdate" name="dobdate" placeholder="DD" type="number">
-                <p>|</p>
-                <input  id="dobmonth" name="dobmonth" placeholder="MM"  type="number">
-                <p>|</p>
-                <input id="dobyear" name="dobyear" placeholder="YYYY" type="number">
+                <input type="number" id="dobday" placeholder="DD" min="1" max="31" name="dobday">
+                <div class="vr">|</div>
+                <input type="number" id="dobmonth" placeholder="MM" min="1" max="12" name="dobmonth">
+
+                <div class="vr">|</div>
+
+                <input type="number" id="dobyear" placeholder="YYYY" min="1900" max="2021" name="dobyear">
             </div>
-
-        </div>
-
-        <div class="form-cont">
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" 
-                placeholder="Enter your phone number">
-        </div>
-
-        <div class="form-cont">
-            <label for="password">Password: <span id="reqd">*</span></label>
-            <input type="password" id="password" name="password" 
-                placeholder="Enter your password">
-        </div>
-
-        <div class="form-cont">
-            <label for="confirm-password">Confirm Password: <span id="reqd">*</span></label>
-            <input type="password" id="confirm-password" name="confirm-password" 
-                placeholder="Confirm your password">
         </div>
 
 
+        <p class="err"  id="doberr">Please Enter DOB</p>
+
         <div class="form-cont">
-            <label for="country">Country: <span id="reqd">*</span></label>
+            <label>Phone:<span id="reqd">*</span>
+            </label>
+
+            <input type="number" id="phone" name="phone" placeholder="Enter your phone number" maxlength="10" >
+        </div>
+        <p class="err"  id="phoneerr">Please Enter Phone</p>
+
+        <div class="form-cont">
+            <label>Password:<span id="reqd">*</span>
+            </label>
+
+            <input type="text" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <p class="err"  id="passworderr">Please Enter Password</p>
+
+        <div class="form-cont">
+            <label>Confirm Password:<span id="reqd">*</span>
+            </label>
+
+            <input type="text" id="confirmpassword" name="confirmpassword" placeholder="Enter your confirm password">
+        </div>
+        <p class="err"  id="confirmpassworderr">Please Enter Confirm Password</p>
+
+        <div class="form-cont">
+            <label>Country: <span id="reqd">*</span></label>
             <select id="country" name="country">
-                <option value="">Select a country</option>
-                <option value="AF">Afghanistan</option>
-                <option value="AX">Åland Islands</option>
-                <option value="IN">India</option>
-                <!-- more options here -->
+                <option value="">Select Country</option>
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+                <option value="canada">Canada</option>
             </select>
         </div>
-
+        <p class="err"  id="countryerr">Please Enter Country</p>
 
         <div class="form-cont1">
-            <label for="address">Address:</label>
-            <textarea id="address" name="address"  placeholder="Enter your address"></textarea>
+            <label>Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your address"></textarea>
         </div>
 
-        <input type="submit" value="Submit" id="submitbtn">
-    </form>
 
+        <input type="submit" value="Submit" id="submitbtn"
+            onclick="handleformdata(event)"
+        >
+    </form>
 </body>
 
+
+<script>
+    const handleformdata = (e)=>{
+        e.preventDefault();
+        let firstname = document.getElementById("first-name").value;
+        let secondname = document.getElementById("second-name").value;
+        let email = document.getElementById("email").value;
+        let dobday = document.getElementById("dobday").value;
+        let dobmonth = document.getElementById("dobmonth").value;
+        let dobyear = document.getElementById("dobyear").value;
+        let phone = document.getElementById("phone").value;
+        let password = document.getElementById("password").value;
+        let confirmpassword = document.getElementById("confirmpassword").value;
+        let country = document.getElementById("country").value;
+        let address = document.getElementById("address").value;
+
+        let firstnameerr = document.getElementById("firstnameerr");
+        let emailerr = document.getElementById("emailerr");
+        let doberr = document.getElementById("doberr");
+        let phoneerr = document.getElementById("phoneerr");
+        let passworderr = document.getElementById("passworderr");
+        let confirmpassworderr = document.getElementById("confirmpassworderr");
+        let countryerr = document.getElementById("countryerr");
+
+        if(firstname == ""){
+            firstnameerr.style.display = "block";
+        }else{
+            firstnameerr.style.display = "none";
+        }
+
+        if(email == ""){
+            emailerr.style.display = "block";
+        }else{
+            emailerr.style.display = "none";
+        }
+
+        if(dobday == "" || dobmonth == "" || dobyear == ""){
+            doberr.style.display = "block";
+        }else{
+            doberr.style.display = "none";
+        }
+
+        if(phone == "" || phone.length < 10){
+            phoneerr.style.display = "block";
+        }else{
+            phoneerr.style.display = "none";
+        }
+
+        if(password == ""){
+            passworderr.style.display = "block";
+        }else{
+            passworderr.style.display = "none";
+        }
+
+        if(confirmpassword == ""){
+            confirmpassworderr.style.display = "block";
+        }else{
+            confirmpassworderr.style.display = "none";
+        }
+
+        if(country == ""){
+            countryerr.style.display = "block";
+        }else{
+            countryerr.style.display = "none";
+        }
+    }
+</script>
 </html>
